@@ -1,19 +1,21 @@
-import { Module, HttpModule } from '@nestjs/common';
+import { Module, HttpModule, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoreModule } from './core/core.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from './core/config/config.service';
-import { async } from 'rxjs/internal/scheduler/async';
-import { MoviesModule } from './movies/movies.module';
-import { DbEntities } from './dbEntities';
-import { NamesModule } from './names/names.module';
-import { ProdcompanyModule } from './prodcompany/prodcompany.module';
-import { CountryModule } from './country/country.module';
-import { CityModule } from './city/city.module';
-import { ActorModule } from './actor/actor.module';
-import { UserModule } from './user/user.module';
-import { ReviewsModule } from './reviews/reviews.module';
+import { MoviesModule } from './modules/movies/movies.module';
+import { DbEntities } from './common/db/dbEntities';
+import { NamesModule } from './modules/names/names.module';
+import { ProdcompanyModule } from './modules/prodcompany/prodcompany.module';
+import { CountryModule } from './modules/country/country.module';
+import { CityModule } from './modules/city/city.module';
+import { ActorModule } from './modules/actor/actor.module';
+import { UserModule } from './modules/user/user.module';
+import { ReviewsModule } from './modules/reviews/reviews.module';
+import { UserInfoMiddleware } from './common/middlewares/userInfo.middleware';
+import { MoviesController } from './modules/movies/movies.controller';
+import { AuthModule } from './core/auth/auth.module';
 
 @Module({
   imports: [
@@ -33,9 +35,17 @@ import { ReviewsModule } from './reviews/reviews.module';
     CityModule,
     ActorModule,
     UserModule,
-    ReviewsModule
+    ReviewsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(UserInfoMiddleware)
+      .forRoutes('*');
+  }
+  
+} 

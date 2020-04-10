@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigPath } from "./configPath";
 const Config = require('config');
-import { DbEntities } from "src/dbEntities";
+import { DbEntities } from "../../common/db/dbEntities";
 
 
 @Injectable()
