@@ -1,7 +1,6 @@
 import * as Joi from '@hapi/joi';
-import { UserRegisterRequest } from './userRegister.request';
 import { Gender } from 'sdk';
-
+import { UserRegisterRequest } from './userRegister.request';
 
 export const UserRegisterRequestSchema = Joi.object<UserRegisterRequest>({
   email: Joi.string()

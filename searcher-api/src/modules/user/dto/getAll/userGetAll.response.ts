@@ -1,10 +1,10 @@
-import { UserDTO } from "../user.dto";
+import { UserDTO } from '../user.dto';
 
 export class UserGetAllResponse {
-  items: UserDTO[]
+  items: UserDTO[];
   totalCount: number;
-  
-  constructor(items?: UserDTO[], totalCount?: number){
+
+  constructor(items?: UserDTO[], totalCount?: number) {
     this.items = items;
     this.totalCount = totalCount;
   }

@@ -1,13 +1,13 @@
-import { PrimaryGeneratedColumn, Entity, Column } from "typeorm";
-import { IActor } from "../../models/db/actor.model";
+import { PrimaryGeneratedColumn, Entity, Column } from 'typeorm';
+import { IActor } from '../../models/db/actor.model';
 
 @Entity('actor')
 export class Actor implements IActor {
   @PrimaryGeneratedColumn()
-  id: number; 
-  
+  id: number;
+
   @Column('varchar')
-  imdb_name_id
+  imdb_name_id?: string;
 
   @Column('varchar')
   name: string;
@@ -16,63 +16,63 @@ export class Actor implements IActor {
   birth_name: string;
 
   @Column('double')
-  height: number;
+  height?: number;
 
   @Column('longtext')
-  bio: string;
+  bio?: string;
 
   @Column('varchar')
-  birth_details: string;
+  birth_details?: string;
 
   @Column('double')
-  birth_year: number;
+  birth_year?: number;
 
   @Column('datetime')
-  date_of_birth: string;
+  date_of_birth?: string;
 
   @Column('varchar')
-  death_details: string;
+  death_details?: string;
 
   @Column('double')
-  death_year: number;
+  death_year?: number;
 
   @Column('datetime')
-  date_of_death: string;
+  date_of_death?: string;
 
   @Column('varchar')
-  place_of_death: string;
+  place_of_death?: string;
 
   @Column('varchar')
-  reason_of_death: string;
+  reason_of_death?: string;
 
   @Column('int')
-  spounces: number;
+  spounces?: number;
 
   @Column('int')
-  divorces: number;
+  divorces?: number;
 
   @Column('int')
-  spouses_with_children: number;
+  spouses_with_children?: number;
 
   @Column('int')
-  children: number;
+  children?: number;
 
   @Column('varchar')
-  primary_profession: string;
+  primary_profession?: string;
 
   @Column('varchar')
-  birth_day: string;
+  birth_day?: string;
 
   @Column('varchar')
-  state: string;
+  state?: string;
 
   @Column('varchar')
-  countryname: string;
+  countryname?: string;
 
   @Column('varchar')
-  short_country: string;
+  short_country?: string;
 
-  cityId: number;;
+  cityId?: number;
 
-  countryId: number;
+  countryId?: number;
 }

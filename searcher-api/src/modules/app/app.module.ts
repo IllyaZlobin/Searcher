@@ -1,7 +1,7 @@
 import { Module, HttpModule, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { CoreModule } from '../../core/core.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { MoviesModule } from '../movies/movies.module';
 import { NamesModule } from '../names/names.module';
 import { ProdcompanyModule } from '../prodcompany/prodcompany.module';
@@ -24,7 +24,7 @@ import { TypeOrmConfig } from '../shared/db';
       inject: [TypeOrmConfig],
       useFactory: async (config: TypeOrmConfig) => ({
         ...config.configure(),
-      })
+      }),
     }),
     MoviesModule,
     NamesModule,
@@ -40,10 +40,7 @@ import { TypeOrmConfig } from '../shared/db';
   providers: [],
 })
 export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(UserInfoMiddleware)
-      .forRoutes('*');
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(UserInfoMiddleware).forRoutes('*');
   }
-  
-} 
+}

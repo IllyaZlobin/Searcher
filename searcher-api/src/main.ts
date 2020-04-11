@@ -1,7 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './modules/app/app.module';
-import { ConfigService } from './modules/shared/configuration/configService';
-import { configureFilters, configurePipes, configureInterceptors, configureSwagger } from './startup';
+import {
+  configureFilters,
+  configurePipes,
+  configureInterceptors,
+  configureSwagger,
+} from './startup';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);

@@ -1,4 +1,6 @@
-export interface IActor {
+import { IActor } from 'sdk';
+
+export class ActorDto implements IActor {
   id: number;
   imdb_name_id?: string;
   name: string;

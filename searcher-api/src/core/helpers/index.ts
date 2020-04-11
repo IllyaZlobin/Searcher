@@ -1,3 +1,3 @@
-export * from './checkPassword'
-export * from './checkUserEmail'
-export * from './hashUserPassword'
+export * from './checkPassword';
+export * from './checkUserEmail';
+export * from './hashUserPassword';

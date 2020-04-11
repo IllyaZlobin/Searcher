@@ -1,5 +1,5 @@
-import { IUser } from '../../../../sdk/models/db/user.model';
 import { Gender } from 'sdk/models/enums/gender';
+import { IUser } from '../../../../sdk/models/db/user.model';
 
 export class UserDTO implements IUser {
   id: number;
