@@ -13,6 +13,7 @@ export function configureSwagger(
     .setTitle(title)
     .setDescription(description)
     .setVersion(version)
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

@@ -4,8 +4,8 @@ import { UserGetAllResponse } from './dto/getAll/userGetAll.response';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/core/auth/jwtAuthGuard';
 
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
+//@ApiBearerAuth()
+//@UseGuards(JwtAuthGuard)
 @ApiTags('user')
 @Controller('user')
 export class UserController {
