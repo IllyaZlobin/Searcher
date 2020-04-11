@@ -1,6 +1,5 @@
 import { Like, getRepository } from "typeorm";
-import { User } from "src/common/db/entities/user.entity";
-import { ValidationException } from "src/common/exceptions/validation.exception";
+import { User } from "sdk/orm/entities/user.entity";
 
 export const checkEmail = async (email) => {
 

@@ -1,0 +1,33 @@
+import {
+  Actor,
+  Actors,
+  City,
+  Country,
+  Directors,
+  Genres,
+  Movies,
+  MpaaRating,
+  Names,
+  ProdCompany,
+  Reviews,
+  User,
+  UserInfoVw,
+  UserPhoto,
+} from 'sdk/orm';
+
+export const DbEntities = [
+  Actor,
+  Actors,
+  City,
+  Country,
+  Directors,
+  Genres,
+  Movies,
+  MpaaRating,
+  Names,
+  ProdCompany,
+  Reviews,
+  User,
+  UserInfoVw,
+  UserPhoto,
+];

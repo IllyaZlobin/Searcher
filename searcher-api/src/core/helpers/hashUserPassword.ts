@@ -1,5 +1,5 @@
 import { UserRegisterRequest } from "src/core/auth/dto/register/userRegister.request"
-import { User } from "src/common/db/entities/user.entity";
+import { User } from "sdk/orm/entities/user.entity";
 const bcrypt = require('bcrypt');
 const saltRound = 15;
 
