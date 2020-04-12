@@ -1,8 +1,8 @@
 import * as Joi from '@hapi/joi';
 import { PaginationRequestSchema } from 'sdk/nest/dtos';
-import { ActoreGetAllRequest } from './actorGetAll.request';
+import { ActorGetAllRequest } from './actorGetAll.request';
 
-export const ActorGetAllRequestSchema = Joi.object<ActoreGetAllRequest>({
+export const ActorGetAllRequestSchema = Joi.object<ActorGetAllRequest>({
   search: Joi.string()
     .max(50)
     .allow(null)
