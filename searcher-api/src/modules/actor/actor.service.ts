@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Actor, SortDirection, NotFoundException } from 'sdk';
+import { Actor, SortDirection } from 'sdk';
 import { Repository, Like } from 'typeorm';
 import { Counted } from 'sdk/nest/dtos';
 import { isEntityExist } from 'sdk/nest/helpers/isEntityExist';
@@ -39,13 +39,9 @@ export class ActorService implements Crud<ActorDto> {
   }
 
   async getById(id: number): Promise<ActorDto> {
-    const actor = this.actorRepository.findOne(id);
+    await isEntityExist(id, this.actorRepository);
 
-    if (!actor) {
-      throw new NotFoundException(`User Id - ${id}, not foudn`, ['id']);
-    }
-
-    return actor;
+    return this.actorRepository.findOne(id);
   }
 
   async create(model: ActorDto): Promise<ActorDto> {

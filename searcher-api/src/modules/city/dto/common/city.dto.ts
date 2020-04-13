@@ -1,4 +1,6 @@
-export interface ICity {
+import { ICity } from 'sdk';
+
+export class CityDto implements ICity {
   id: number;
   name: string;
   name_ancii: string;
