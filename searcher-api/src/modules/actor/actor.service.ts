@@ -14,7 +14,9 @@ export class ActorService implements Crud<ActorDto> {
     private readonly actorRepository: Repository<Actor>,
   ) {}
 
-  async getAll(limit: number, offset: number, search?: string): Promise<Counted<Actor>> {
+  async getAll(...args: any[]): Promise<Counted<Actor>> {
+    const [{ limit, offset, search }] = args;
+
     let whereCondition;
 
     if (search) {

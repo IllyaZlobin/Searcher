@@ -26,9 +26,7 @@ export class CityController {
 
   @Get()
   async getAll(@Query() model: CityGetAllRequest): Promise<CityGetAllResponse> {
-    const { limit, offset } = model;
-
-    const { items, totalCount } = await this.cityService.getAll(limit, offset);
+    const { items, totalCount } = await this.cityService.getAll(model);
 
     return new CityGetAllResponse(totalCount, items);
   }

@@ -26,9 +26,7 @@ export class ActorController {
 
   @Get()
   async getAll(@Query() model: ActorGetAllRequest): Promise<ActorGetAllResponse> {
-    const { limit, offset, search } = model;
-
-    const { totalCount, items } = await this.actorService.getAll(limit, offset, search);
+    const { totalCount, items } = await this.actorService.getAll(model);
 
     return new ActorGetAllResponse(totalCount, items);
   }

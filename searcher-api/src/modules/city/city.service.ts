@@ -12,7 +12,7 @@ export class CityService implements Crud<CityDto> {
   constructor(@InjectRepository(City) private readonly cityRepository: Repository<City>) {}
 
   async getAll(...args: any[]): Promise<Counted<CityDto>> {
-    const [limit, offset] = args;
+    const [{ limit, offset }] = args;
 
     const [entities, totalCount] = await this.cityRepository.findAndCount({
       take: limit,
