@@ -15,7 +15,7 @@ export class User implements IUser {
   name: string;
 
   @Column('varchar')
-  surname: string;
+  surname?: string;
 
   @Column('varchar')
   gender: Gender;
@@ -24,7 +24,7 @@ export class User implements IUser {
   age: number;
 
   @Column('varchar')
-  web: string;
+  web?: string;
 
   @Column('varchar')
   password: string;
@@ -33,8 +33,8 @@ export class User implements IUser {
   role: UserRoles;
 
   @Column('int')
-  cityId: number;
+  cityId?: number;
 
   @Column('int')
-  countryId: number;
+  countryId?: number;
 }

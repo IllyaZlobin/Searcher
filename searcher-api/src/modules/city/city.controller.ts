@@ -8,8 +8,13 @@ import {
   Put,
   ParseIntPipe,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from 'sdk/nest/guards/role.guard';
+import { Role } from 'sdk/nest/decorators';
+import { UserRoles } from 'sdk';
 import { CityService } from './city.service';
 import { CityGetAllRequest } from './dto/getAll/cityGetAll.request';
 import { CityGetAllResponse } from './dto/getAll/cityGetAll.response';
@@ -20,11 +25,14 @@ import { CityUpdateRequest } from './dto/update/cityUpdate.request';
 import { CityUpdateResponse } from './dto/update/cityUpdate.response';
 
 @ApiTags('city')
+@ApiBearerAuth()
+@UseGuards(AuthGuard('jwt'), RoleGuard)
 @Controller('city')
 export class CityController {
   constructor(private readonly cityService: CityService) {}
 
   @Get()
+  @Role(UserRoles.Admin)
   async getAll(@Query() model: CityGetAllRequest): Promise<CityGetAllResponse> {
     const { items, totalCount } = await this.cityService.getAll(model);
 
@@ -32,6 +40,7 @@ export class CityController {
   }
 
   @Get(':id')
+  @Role(UserRoles.Admin)
   async getById(@Param('id') cityId: number): Promise<CityGetByIdResponse> {
     const city = await this.cityService.getById(cityId);
 
@@ -39,6 +48,7 @@ export class CityController {
   }
 
   @Post()
+  @Role(UserRoles.Admin)
   async create(@Body() model: CityCreateRequest): Promise<CityCreateResponse> {
     const city = await this.cityService.create(model);
 
@@ -46,6 +56,7 @@ export class CityController {
   }
 
   @Put(':id')
+  @Role(UserRoles.Admin)
   async update(
     @Param('id', ParseIntPipe) cityId: number,
     @Body() model: CityUpdateRequest,
@@ -56,6 +67,7 @@ export class CityController {
   }
 
   @Delete(':id')
+  @Role(UserRoles.Admin)
   async delete(@Param('id') cityId: number): Promise<void> {
     return this.cityService.delete(cityId);
   }

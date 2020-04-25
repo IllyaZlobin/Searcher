@@ -1,5 +1,6 @@
-import { Module, HttpModule, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from 'src/core/auth/auth.module';
 import { AppController } from './app.controller';
 import { MoviesModule } from '../movies/movies.module';
 import { NamesModule } from '../names/names.module';
@@ -9,7 +10,6 @@ import { CityModule } from '../city/city.module';
 import { ActorModule } from '../actor/actor.module';
 import { UserModule } from '../user/user.module';
 import { ReviewsModule } from '../reviews/reviews.module';
-import { UserInfoMiddleware } from '../../../sdk/nest/middlewares/userInfo.middleware';
 import { SharedModule } from '../shared/shared.module';
 import { TypeOrmConfig } from '../shared/db';
 
@@ -17,6 +17,7 @@ import { TypeOrmConfig } from '../shared/db';
   imports: [
     SharedModule,
     HttpModule,
+    AuthModule,
     TypeOrmModule.forRootAsync({
       inject: [TypeOrmConfig],
       useFactory: async (config: TypeOrmConfig) => ({
@@ -35,8 +36,4 @@ import { TypeOrmConfig } from '../shared/db';
   controllers: [AppController],
   providers: [],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(UserInfoMiddleware).forRoutes('*');
-  }
-}
+export class AppModule {}

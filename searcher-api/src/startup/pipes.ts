@@ -3,6 +3,8 @@ import { JoiValidationPipe } from 'sdk';
 import { ActorValidationSchemas } from 'src/modules/actor/dto/actorValidation.schemas';
 import { CityValidationSchemas } from 'src/modules/city/dto/cityValidation.schemas';
 import { CountryValidationSchemas } from 'src/modules/country/dto/countryValidation.schemas';
+import { UserValidationSchemas } from 'src/modules/user/dto/userValidation.schema';
+import { AuthValidationSchemas } from 'src/core/auth/dto/authValidation.schema';
 
 export function configurePipes(app: INestApplication): void {
   app.useGlobalPipes(
@@ -10,6 +12,8 @@ export function configurePipes(app: INestApplication): void {
       ...ActorValidationSchemas,
       ...CityValidationSchemas,
       ...CountryValidationSchemas,
+      ...UserValidationSchemas,
+      ...AuthValidationSchemas,
     }),
   );
 }

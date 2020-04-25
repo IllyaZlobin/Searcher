@@ -1,4 +1,4 @@
-import { UserDTO } from '../user.dto';
+import { UserDTO } from '../common/user.dto';
 
 export class UserGetAllResponse {
   items: UserDTO[];

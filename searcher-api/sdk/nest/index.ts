@@ -5,4 +5,3 @@ export * from './filters';
 export * from './pipes';
 export * from './loggers';
 export * from './utilities';
-export * from './middlewares';

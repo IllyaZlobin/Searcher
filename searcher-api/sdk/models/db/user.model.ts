@@ -5,12 +5,12 @@ export interface IUser {
   id: number;
   email: string;
   name: string;
-  surname: string;
+  surname?: string;
   gender: Gender;
   age: number;
-  cityId: number;
-  countryId: number;
-  web: string;
+  cityId?: number;
+  countryId?: number;
+  web?: string;
   password: string;
   role: UserRoles;
 }
