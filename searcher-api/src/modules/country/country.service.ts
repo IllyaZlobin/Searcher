@@ -1,14 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { Crud } from 'sdk/models/common/crud';
-import { Counted } from 'sdk/nest/dtos';
+import { ICrud, Country } from 'sdk';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Country } from 'sdk';
+import { Counted } from 'sdk/nest/dtos';
 import { Repository } from 'typeorm';
 import { isEntityExist } from 'sdk/nest/helpers/isEntityExist';
 import { CountryDto } from './dto/common/country.dto';
 
 @Injectable()
-export class CountryService implements Crud<CountryDto> {
+export class CountryService implements ICrud<CountryDto> {
   constructor(@InjectRepository(Country) private readonly countryRepository: Repository<Country>) {}
 
   async getAll(...args: any[]): Promise<Counted<CountryDto>> {

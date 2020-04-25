@@ -12,3 +12,4 @@ export * from './reviews.model';
 export * from './user.model';
 export * from './userInfoVw.model';
 export * from './userphoto.model';
+export * from './refreshToken.model';

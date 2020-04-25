@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { IUser } from "../../models/db/user.model";
-import { Gender } from "../../models/enums/gender";
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { UserRoles } from 'sdk/models/enums/userRoles';
+import { IUser } from '../../models/db/user.model';
+import { Gender } from '../../models/enums/gender';
 
 @Entity('user')
 export class User implements IUser {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -29,16 +29,12 @@ export class User implements IUser {
   @Column('varchar')
   password: string;
 
-  @Column('varchar')
-  token: string;
-
-  @Column('varchar')
-  refresh_token: string;
+  @Column({ type: 'enum', enum: UserRoles })
+  role: UserRoles;
 
   @Column('int')
   cityId: number;
 
   @Column('int')
   countryId: number;
-
 }

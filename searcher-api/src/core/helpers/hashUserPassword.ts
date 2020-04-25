@@ -1,5 +1,4 @@
-import { UserRegisterRequest } from 'src/core/auth/dto/register/userRegister.request';
-import { User } from 'sdk/orm/entities/user.entity';
+/* import { User } from 'sdk/orm/entities/user.entity';
 
 import { bcrypt } from 'bcrypt';
 
@@ -25,4 +24,4 @@ export const hashPasswordAndGet = async (model: UserRegisterRequest): Promise<Us
   });
 
   return userWithHashPasswod as User;
-};
+}; */

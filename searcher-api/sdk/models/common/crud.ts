@@ -1,6 +1,6 @@
 import { Counted } from 'sdk/nest/dtos';
 
-export interface Crud<T> {
+export interface ICrud<T> {
   getAll(...args: any[]): Promise<Counted<T>>;
   getById(id: number): Promise<T>;
   create(model: T): Promise<T>;

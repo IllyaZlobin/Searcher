@@ -11,3 +11,4 @@ export * from './prodcompany.entity';
 export * from './reviews.entity';
 export * from './user.entity';
 export * from './userphoto.entity';
+export * from './refreshToken.entity';

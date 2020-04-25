@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Crud } from 'sdk/models/common/crud';
+import { ICrud } from 'sdk/models/common/crud';
 import { Counted } from 'sdk/nest/dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { City } from 'sdk';
@@ -8,7 +8,7 @@ import { isEntityExist } from 'sdk/nest/helpers/isEntityExist';
 import { CityDto } from './dto/common/city.dto';
 
 @Injectable()
-export class CityService implements Crud<CityDto> {
+export class CityService implements ICrud<CityDto> {
   constructor(@InjectRepository(City) private readonly cityRepository: Repository<City>) {}
 
   async getAll(...args: any[]): Promise<Counted<CityDto>> {

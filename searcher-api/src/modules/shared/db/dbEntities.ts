@@ -13,6 +13,7 @@ import {
   User,
   UserInfoVw,
   UserPhoto,
+  RefreshToken,
 } from 'sdk/orm';
 
 export const DbEntities = [
@@ -30,4 +31,5 @@ export const DbEntities = [
   User,
   UserInfoVw,
   UserPhoto,
+  RefreshToken,
 ];

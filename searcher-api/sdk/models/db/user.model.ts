@@ -1,4 +1,5 @@
 import { Gender } from '../enums/gender';
+import { UserRoles } from '../enums';
 
 export interface IUser {
   id: number;
@@ -11,6 +12,5 @@ export interface IUser {
   countryId: number;
   web: string;
   password: string;
-  token: string;
-  refresh_token: string;
+  role: UserRoles;
 }

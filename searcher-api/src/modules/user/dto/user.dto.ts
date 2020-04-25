@@ -1,5 +1,4 @@
-import { Gender } from 'sdk/models/enums/gender';
-import { IUser } from '../../../../sdk/models/db/user.model';
+import { UserRoles, IUser, Gender } from 'sdk';
 
 export class UserDTO implements IUser {
   id: number;
@@ -7,10 +6,9 @@ export class UserDTO implements IUser {
   name: string;
   surname: string;
   password: string;
-  token: string;
-  refresh_token: string;
   gender: Gender;
   age: number;
+  role: UserRoles;
   cityId: number;
   countryId: number;
   web: string;

@@ -4,11 +4,11 @@ import { Actor, SortDirection } from 'sdk';
 import { Repository, Like } from 'typeorm';
 import { Counted } from 'sdk/nest/dtos';
 import { isEntityExist } from 'sdk/nest/helpers/isEntityExist';
-import { Crud } from 'sdk/models/common/crud';
+import { ICrud } from 'sdk/models/common/crud';
 import { ActorDto } from './dto/common/actor.dto';
 
 @Injectable()
-export class ActorService implements Crud<ActorDto> {
+export class ActorService implements ICrud<ActorDto> {
   constructor(
     @InjectRepository(Actor)
     private readonly actorRepository: Repository<Actor>,
