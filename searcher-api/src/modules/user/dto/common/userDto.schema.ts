@@ -43,5 +43,7 @@ export const UserDtoSchema = {
     .required(),
   role: Joi.string()
     .valid(...Object.values(UserRoles))
-    .required(),
+    .optional()
+    .allow(null)
+    .default(UserRoles.User),
 };

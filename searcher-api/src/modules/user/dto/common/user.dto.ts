@@ -11,5 +11,5 @@ export class UserDTO implements IUser {
   countryId?: number;
   web?: string;
   password: string;
-  role: UserRoles;
+  role: UserRoles = UserRoles.User;
 }
