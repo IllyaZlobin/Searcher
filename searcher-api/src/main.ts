@@ -19,7 +19,7 @@ async function bootstrap(): Promise<void> {
   configureInterceptors(app);
   configureSwagger(app, 'Searcher API API', 'api documentation', '1.0');
 
-  const port = 3000;
+  const port = 3001;
   await app.listen(port);
 }
 bootstrap();
