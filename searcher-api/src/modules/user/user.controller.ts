@@ -33,7 +33,7 @@ export class UserController {
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), RoleGuard)
-  @Role(UserRoles.Admin)
+  @Role(UserRoles.Admin, UserRoles.User)
   @Get()
   async getAll(@Query() model: UserGetAllRequest): Promise<UserGetAllResponse> {
     const { limit, offset } = model;

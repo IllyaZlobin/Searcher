@@ -21,8 +21,7 @@ export class UserService implements ICrud<UserDTO> {
   ) {}
 
   async getAll(...args: any[]): Promise<Counted<UserDTO>> {
-    const [{ limit, offset }] = args;
-
+    const [limit, offset] = args;
     const [entities, totalCount] = await this.userRepository.findAndCount({
       take: limit,
       skip: offset,

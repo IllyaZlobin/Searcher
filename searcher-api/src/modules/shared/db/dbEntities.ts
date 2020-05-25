@@ -14,7 +14,10 @@ import {
   UserInfoVw,
   UserPhoto,
   RefreshToken,
+  MovieListVw,
+  MovieDetailsVw,
 } from 'sdk/orm';
+import { MovieReviewsVw } from 'sdk/orm/views/movieReviews.view';
 
 export const DbEntities = [
   Actor,
@@ -30,6 +33,9 @@ export const DbEntities = [
   Reviews,
   User,
   UserInfoVw,
+  MovieListVw,
+  MovieDetailsVw,
+  MovieReviewsVw,
   UserPhoto,
   RefreshToken,
 ];

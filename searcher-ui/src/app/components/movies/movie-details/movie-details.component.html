@@ -1,0 +1,21 @@
+<div fxLayout="row wrap">
+  <div fxFlex="60" fxFlexOffset="20" class="movie_detail">
+    <div fxLayout="row">
+      <img class="movie_poster" fxFlex="40"
+        [style.background-image]="'url(' + (movie$ | async).data.details.poster + ')'" fxFlex="40" />
+      <div class="movie-content" fxFlexOffset="40" fxFlex="60">
+        <div class="title">
+          <h1>{{(movie$ | async).data.details.title}}</h1>
+        </div>
+        <div class="genres">
+          <h1>Genres:</h1><span> {{genres}}</span>
+        </div>
+        <div class="movie_description">
+          <span>
+            {{(movie$ | async).data.details.description}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

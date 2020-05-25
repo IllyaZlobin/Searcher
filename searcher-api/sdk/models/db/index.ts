@@ -13,3 +13,6 @@ export * from './user.model';
 export * from './userInfoVw.model';
 export * from './userphoto.model';
 export * from './refreshToken.model';
+export * from './movieDetailsVw.models';
+export * from './movieListVw.model';
+export * from './movieReviews.model';
