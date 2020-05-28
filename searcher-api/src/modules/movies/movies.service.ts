@@ -23,7 +23,7 @@ export class MoviesService {
     return new Counted(1000, entities);
   }
 
-  async getDetails(id: number): Promise<{ details; commentsА }> {
+  async getDetails(id: number): Promise<{ details; comments }> {
     const details = await this.movieDetailsViewRepository.findOne({ where: { id } });
 
     const comments = await this.reviewsRepository.find({
@@ -31,7 +31,9 @@ export class MoviesService {
         movieId: id,
       },
     });
-
-    return { details, comments };
+    const itemsPerPage = 5;
+    const page = 1;
+    const totalPages = Math.round(comments.length / itemsPerPage);
+    return { details, comments: { comments, totalPages, page, itemsPerPage } };
   }
 }

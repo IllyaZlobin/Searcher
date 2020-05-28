@@ -12,6 +12,8 @@ import { MoviesService, UserService } from './../../../core/services';
 export class MovieDetailsComponent implements OnInit {
   movie$: Observable<any>;
   genres: string[];
+  actors: string[];
+  directors: string[];
   movieInternalDetails: any;
   movieId: number;
   previousUserRating = 0;
@@ -31,6 +33,8 @@ export class MovieDetailsComponent implements OnInit {
     this.movie$.subscribe(x => console.log(x));
     this.movie$.subscribe(x => {
       this.genres = x.data.details.genres.split(',').join(', ');
+      this.actors = x.data.details.actors.split(',');
+      this.directors = x.data.details.directors.split(',');
     });
 
     // check if user has already rated the movie

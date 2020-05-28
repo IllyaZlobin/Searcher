@@ -1,11 +1,8 @@
 @import '../../../../styles//variables.scss';
 
 .movie_detail {
-  height: 500px;
+
   position: relative;
-  h1: {
-    color: red;;
-  }
 
   .movie_poster {
     position: absolute;  
@@ -28,35 +25,126 @@
     margin: 0px;
     padding: 0px;
     text-align: center;
+
+    h1 {
+      font-family: cursive;
+      font-weight: bold;
+      font-size: 2.5em;
+    }
   }
 
   .genres {
-    h2 {
-      color: map-get($colors, vivid );
-      font-size: 1.1em;
+    margin-top: 0.5em;
+
+    h1 {
+      font-family: cursive;
     }
     span {
-      margin-left: 1em;
+      margin-left: 0.2em;
+      font-size: 1.5em;
       font-weight: bold;
-      font-style: italic;
+      font-style: inherit;
       color: white;
     }   
   }
 
-  .movie_description {
-    font-weight: bold;
-    font-style: italic;
-    color: white;    
+  .stars {
+    margin-top: 0.5em;
+
+    h1 {
+      font-family: cursive;
+    }
+  }
+  .revenue {
+    margin-top: 0.5em;
+
+    h1 {
+      font-family: cursive;
+    }
   }
 
-  .stars {
-    display: block;
-    padding-bottom: 0;
-    color: #ffc107;
-    font-size: 1.3em;
+  .runtime {
+    margin-top: 0.5em;
+
+    h1 {
+      font-family: cursive;
+    }
+  }
+
+  .movie_description {
+    margin-top: 0.5em;
+
+    span {
+      margin-left: 0.2em;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: inherit;
+      color: white;
+    }  ;    
+  }
+
+  .actors {
+    margin-top: 0.5em;
+
+    span {
+      margin-left: 0.2em;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: inherit;
+      color: white;
+    }
+  }
+
+  .production {
+    margin-top: 0.5em;
+
+    span {
+      margin-left: 0.2em;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: inherit;
+      color: white;
+    }
+  }
+
+  .directors {
+    margin-top: 0.5em;
+
+    span {
+      margin-left: 0.2em;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: inherit;
+      color: white;
+    }
+  }
+
+  .mpaa {
+    margin-top: 0.5em;
+
+    span {
+      margin-left: 0.2em;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: inherit;
+      color: white;
+    }
+  }
+
+  .year {
+    margin-top: 0.5em;
+
+    span {
+      margin-left: 0.2em;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: inherit;
+      color: white;
+    }
   }
 
   h1 {
+    font-family: cursive;
     display: inline;
     font-weight: bold;
     color: #ffc107
@@ -157,4 +245,9 @@ a:hover {
   font: 14px/22px "Lato", Arial, sans-serif;
   color: #A9A8A3;
   padding: 40px 0;
+}
+
+.comments {
+  height: 500px;
+  position: relative;
 }

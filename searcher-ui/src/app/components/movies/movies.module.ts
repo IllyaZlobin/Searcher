@@ -7,6 +7,7 @@ import {
 } from './movie-list/movie-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
   ],
   declarations: [
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    CommentsComponent
   ],
   providers: []
 })
