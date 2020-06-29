@@ -1,15 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="center">
     <div fxFlex="100" fxFlex.gt-sm="70" class="title">
-        <h1>Top 50 Movies from Database</h1>
-    </div>
-</div>
-<div fxLayout="row" *ngIf="!(topMovies$ | async)">
-    <div fxFlex="100" class="text-center">
-
+        <h1>Top 50 Movies</h1>
     </div>
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="5px">
-    <mat-card fxFlex="100" fxFlex.gt-md="30" fxFlex.gt-sm="40" fxFlex.gt-xs="45" class="movie-card" *ngFor="let movie of (topMovies$ | async)?.data.movies">
+    <mat-card fxFlex="100" fxFlex.gt-md="30" fxFlex.gt-sm="40" fxFlex.gt-xs="45" class="movie-card"
+        *ngFor="let movie of (topMovies$ | async)?.data.movies">
         <div class="img-wrap" *ngIf="movie.poster; else notImage">
             <img md-card-image [src]=movie.poster width="350" height="400">
         </div>
@@ -32,7 +28,7 @@
                 </div>
                 <div fxFlex="25">
                     <i class="fa fa-2x fa-star" aria-hidden="true"></i><br>
-                    {{ 0 }}
+                    {{ movie.totalStars }}
                 </div>
                 <div fxFlex="25">
                     <i class="fa fa-2x fa-usd" aria-hidden="true"></i><br>
@@ -41,7 +37,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="center">
-            <button fxFlex="50" mat-raised-button class="fw" (click)="getMovieDetails(movie.id)">DETAILS</button>   
+            <button fxFlex="50" mat-raised-button class="fw" (click)="getMovieDetails(movie.id)">DETAILS</button>
         </mat-card-actions>
     </mat-card>
 </div>

@@ -11,4 +11,5 @@ export interface IMovieListVw {
   production: string;
   poster: string;
   comments: number;
+  totalStars: number;
 }

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MovieListVw, MovieDetailsVw, Reviews, MovieReviewsVw } from 'sdk';
+import { MovieListVw, MovieDetailsVw, Reviews, MovieReviewsVw, MovieStars } from 'sdk';
 import { MoviesController } from './movies.controller';
 import { MoviesService } from './movies.service';
 import { Movies } from '../../../sdk/orm/entities/movies.entity';
@@ -17,6 +17,7 @@ import { ProdCompany } from '../../../sdk/orm/entities/prodcompany.entity';
       MovieListVw,
       MovieDetailsVw,
       MovieReviewsVw,
+      MovieStars,
     ]),
   ],
   controllers: [MoviesController],

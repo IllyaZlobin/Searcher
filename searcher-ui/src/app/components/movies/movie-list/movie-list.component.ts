@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MoviesService } from '../../../core/services';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { config } from '../../../../config';
+import { FormBuilder } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'movie-list',
@@ -11,18 +14,18 @@ import { Observable } from 'rxjs';
   providers: [MoviesService],
 })
 export class MovieListComponent implements OnInit {
-  public topMovies$: Observable<any>;
+  @Input() topMovies$: Observable<any>;
   public moviesSinceDate: Date | any;
   public spinnerStyles: any;
 
   constructor(private moviesService: MoviesService, private router: Router) {}
 
   ngOnInit() {
-    this.topMovies$ =  this.moviesService.getMovieList();
-    this.moviesService.getMovieList().subscribe(movies => {
-      console.log(movies);
-    })
-    // custom styles to fit loader to card container
+    if (!this.topMovies$) {
+      this.topMovies$ = this.moviesService.getMovieList(
+        config.filmOrderKeys.votes
+      );
+    }
     this.spinnerStyles = {
       margin: '-24px -24px 16px -24px',
     };

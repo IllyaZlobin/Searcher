@@ -50,6 +50,7 @@ export class TokenService {
       const payload = {
         sub: oldPayload.sub,
         role: oldPayload.role,
+        email: oldPayload.email,
       };
       const accessToken = await this.createAccessToken(payload);
       // Remove old refresh token and generate a new one

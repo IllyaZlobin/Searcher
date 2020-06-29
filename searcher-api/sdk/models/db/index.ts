@@ -16,3 +16,4 @@ export * from './refreshToken.model';
 export * from './movieDetailsVw.models';
 export * from './movieListVw.model';
 export * from './movieReviews.model';
+export * from './moviestars.model';

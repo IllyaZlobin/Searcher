@@ -38,4 +38,7 @@ export class MovieListVw implements IMovieListVw {
 
   @ViewColumn()
   comments: number;
+
+  @ViewColumn()
+  totalStars: number;
 }

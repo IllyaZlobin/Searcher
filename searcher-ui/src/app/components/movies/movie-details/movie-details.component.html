@@ -1,27 +1,39 @@
-<div fxLayout="column" >
+<div fxLayout="column">
   <div fxLayout="row" fxFlexFill fxLayout.xs="column" class="movie_detail">
     <img class="movie_poster" fxFlex.gt-xs="40" fxFlex.xs="50" fxFlex="50"
-      [src]="(movie$ | async).data.details.poster" />
+      [src]="(movie$ | async)?.data.details.poster" />
     <div class="movie-content" fxFlexOffset.gt-xs="40" fxFlex="60" fxFlex.xs="50" fxFlexOffset.xs="50">
       <div class="title">
-        <h1>{{(movie$ | async).data.details.title}}</h1>
+        <h1>{{(movie$ | async)?.data.details.title}}</h1>
       </div>
+      <div class="row" *ngIf="avgStars === 0; else noStars">
+        <div class="col-sm-12" style="text-align: center;">
+          <p-rating [cancel]="false" [ngModel]="avgStars" (onRate)="rateMovie($event)" stars="10" ></p-rating>
+        </div>
+      </div>
+      <ng-template #noStars>
+        <div class="row">
+          <div class="col-sm-12" style="text-align: center;">
+            <p-rating [cancel]="false" [ngModel]="avgStars" readonly="true" stars="10" ></p-rating>
+          </div>
+        </div>
+      </ng-template>
       <div class="genres">
-        <h1>Genres:</h1><span> {{genres}}</span>
+        <h1>Genres:</h1><span> {{genres}} </span>
       </div>
       <div class="stars">
-        <h1>Stars: {{(movie$ | async).data.details.rating}} <i class="fa fa-star" aria-hidden="true"></i></h1>
+        <h1>Stars: {{(movie$ | async)?.data.details.rating}} <i class="fa fa-star" aria-hidden="true"></i></h1>
       </div>
       <div class="revenue">
-        <h1>Revenue: {{(movie$ | async).data.details.revenue}} <i class="fa fa-usd" aria-hidden="true"></i></h1>
+        <h1>Revenue: {{(movie$ | async)?.data.details.revenue}} <i class="fa fa-usd" aria-hidden="true"></i></h1>
       </div>
       <div class="runtime">
-        <h1>Runtime: {{(movie$ | async).data.details.runtime}} <i class="fa fa-clock-o" aria-hidden="true"></i></h1>
+        <h1>Runtime: {{(movie$ | async)?.data.details.runtime}} <i class="fa fa-clock-o" aria-hidden="true"></i></h1>
       </div>
       <div class="movie_description">
         <h1>Description: </h1>
         <span>
-          {{(movie$ | async).data.details.description}}
+          {{(movie$ | async)?.data.details.description}}
         </span>
       </div>
       <div class="actors">
@@ -31,21 +43,20 @@
         <h1>Directors:</h1> <span>{{directors}}</span>
       </div>
       <div class="production">
-        <h1>Production:</h1> <span>{{(movie$ | async).data.details.production}}</span>
+        <h1>Production:</h1> <span>{{(movie$ | async)?.data.details.production}}</span>
       </div>
       <div class="mpaa">
-        <h1>Mpaa:</h1><span>{{(movie$ | async).data.details.mpaa}}</span>
+        <h1>Mpaa:</h1><span>{{(movie$ | async)?.data.details.mpaa}}</span>
       </div>
       <div class="year">
-        <h1>Year: </h1><span>{{(movie$ | async).data.details.year}}</span>
+        <h1>Year: </h1><span>{{(movie$ | async)?.data.details.year}}</span>
       </div>
     </div>
   </div>
   <div fxFlex fxLayout="row">
     <div fxFlex.gt-sm="100" fxFlex="100" class="main">
-      <comments [comments]="(movie$ | async).data.comments.comments" width="100"
-        [totalPages]="(movie$ | async).data.comments.totalPages"
-        [itemsPerPage]="(movie$ | async).data.comments.itemsPerPage"></comments>
+      <comments width="100"
+        [movieId]="(movie$ | async).data.details.id"></comments>
     </div>
   </div>
 </div>

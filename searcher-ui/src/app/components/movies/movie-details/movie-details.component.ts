@@ -2,14 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { MoviesService, UserService } from './../../../core/services';
+import {
+  MoviesService,
+  UserService,
+  AuthenticationService,
+} from './../../../core/services';
 
 @Component({
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss'],
-  providers: [MoviesService, UserService]
+  providers: [MoviesService, UserService, AuthenticationService],
 })
 export class MovieDetailsComponent implements OnInit {
+  selectedValue: number;
+  stars: number[] = [1, 2, 3, 4, 5];
   movie$: Observable<any>;
   genres: string[];
   actors: string[];
@@ -17,11 +23,14 @@ export class MovieDetailsComponent implements OnInit {
   movieInternalDetails: any;
   movieId: number;
   previousUserRating = 0;
+  starVal: number;
+  avgStars: number;
 
   constructor(
     private route: ActivatedRoute,
     public userService: UserService,
-    private movieService: MoviesService
+    private movieService: MoviesService,
+    public authService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -30,13 +39,19 @@ export class MovieDetailsComponent implements OnInit {
       this.movieId = movieId;
     });
     this.movie$ = this.movieService.getMovieDetails(this.movieId);
-    this.movie$.subscribe(x => console.log(x));
-    this.movie$.subscribe(x => {
+    this.movie$.subscribe((x) => {
       this.genres = x.data.details.genres.split(',').join(', ');
       this.actors = x.data.details.actors.split(',');
       this.directors = x.data.details.directors.split(',');
     });
 
+    if (this.authService.currentUserSubject) {
+      this.movieService
+        .getMovieDetailsUserStar(this.movieId)
+        .subscribe((x) => (this.avgStars = x.data.averageStars));
+    } else {
+      this.avgStars = 0;
+    }
     // check if user has already rated the movie
     // this.ms
     //   .getMovieRating(this.movieId)
@@ -48,6 +63,11 @@ export class MovieDetailsComponent implements OnInit {
 
   getDetails(id: number) {
     return this.movieService.getMovieDetails(id);
+  }
+
+  rateMovie(event) {
+    const { value } = event;
+    this.movieService.setMovieDetailsUserStar(this.movieId, value).subscribe(x => this.avgStars = x.data.stars);
   }
 
   // rateMovie(ev: IStarRatingOnClickEvent): void {

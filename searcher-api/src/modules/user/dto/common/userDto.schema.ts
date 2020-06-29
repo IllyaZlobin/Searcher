@@ -1,5 +1,5 @@
 import * as Joi from '@hapi/joi';
-import { Gender, UserRoles } from 'sdk/models/enums';
+import { UserRoles } from 'sdk/models/enums';
 
 export const UserDtoSchema = {
   id: Joi.number()
@@ -16,14 +16,11 @@ export const UserDtoSchema = {
     .allow(null)
     .optional(),
   gender: Joi.string()
-    .valid(...Object.values(Gender))
-    .required(),
+    .allow(null)
+    .optional(),
   age: Joi.number()
-    .integer()
-    .positive()
-    .min(10)
-    .max(100)
-    .required(),
+    .optional()
+    .allow(null),
   cityId: Joi.number()
     .positive()
     .allow(null)

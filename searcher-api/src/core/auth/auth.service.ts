@@ -22,6 +22,7 @@ export class AuthService {
     const payload: IJwtPayload = {
       sub: loginResults.id,
       role: loginResults.role,
+      email: loginResults.email,
     };
 
     const loginResponse: LoginResponse = await this.tokenService.createAccessToken(payload);

@@ -16,6 +16,7 @@ import {
   RefreshToken,
   MovieListVw,
   MovieDetailsVw,
+  MovieStars,
 } from 'sdk/orm';
 import { MovieReviewsVw } from 'sdk/orm/views/movieReviews.view';
 
@@ -38,4 +39,5 @@ export const DbEntities = [
   MovieReviewsVw,
   UserPhoto,
   RefreshToken,
+  MovieStars,
 ];
