@@ -1,0 +1,27 @@
+<div fxLayout="row">
+  <div fxFlex="100">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <a routerLink="/" routerLinkActive="active">
+          <i class="fa fa-film" aria-hidden="true"></i>
+        </a>
+        <span class="menu-space-filler"></span>
+        <span *ngIf="authService.currentUserSubject | async; else notAuth">
+          <a routerLink="/search" class="auth-link" routerLinkActive="active">Find movie</a>
+          <a routerLink="/votes" class="auth-link" routerLinkActive="active">Most votes</a>
+          <a routerLink="/rating" class="auth-link" routerLinkActive="active">Best rating</a>
+          <a routerLink="/revenue" class="auth-link" routerLinkActive="active">Revenue</a>
+          <button mat-button (click)="logout()">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+        </span>
+        <ng-template #notAuth>
+          <a routerLink="/signup" class="auth-link">Register</a>
+          <a routerLink="/login" class="auth-link">Login</a>
+          <a routerLink="/" class="auth-link">Home</a>
+        </ng-template>
+        <ng-template>
+          <a routerLink="/" class="auth-link">Home</a>
+        </ng-template>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</div>

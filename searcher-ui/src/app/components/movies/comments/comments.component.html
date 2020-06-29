@@ -1,0 +1,41 @@
+<div fxFlexLayout="row" fxLayoutAlign="center">
+    <div [fxFlex]="width" class="content comments">
+        <mat-list>
+            <h3 mat-subheader>Comments</h3>
+            <span *ngIf="!commentsData || commentsData?.comments.length === 0" class="no-comments">
+                <strong>No comments yet</strong>, be the first to drop a line!
+            </span>
+            <mat-list-item class="comment-item" *ngFor="let comment of commentsData?.comments | paginate: {
+                itemsPerPage: commentsData?.itemsPerPage,
+                currentPage: commentsData?.currentPage,
+                totalItems: commentsData?.itemsPerPage * commentsData?.totalPages
+              }">
+                <mat-icon mat-list-icon>
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                </mat-icon>
+                <h4 mat-line>
+                    {{ comment.user }}
+                    <span class="comment-datetime"><i class="fa fa-clock-o"
+                            aria-hidden="true"></i>{{ comment.review_data | date:'medium' }}</span>
+                </h4>
+                <p mat-line>{{comment.review_text}}</p>
+            </mat-list-item>
+        </mat-list>
+        <pagination-controls class="my-pagination" *ngIf="commentsData?.totalPages > 1"
+            (pageChange)="changePage($event)"></pagination-controls>
+    </div>
+</div>
+<form fxFlexLayout="row" fxLayoutAlign="center" novalidate
+  [formGroup]="commentForm">
+  <div [fxFlex]="width*0.8" class="content">
+    <mat-form-field class="fw">
+      <textarea matInput formControlName="comment"
+        [placeholder]="(authService.currentUserSubject | async) ? 'Post comment (as '+userEmail + ')' : 'Post comment (as guest)'"></textarea>
+    </mat-form-field>
+  </div>
+  <div [fxFlex]="width*0.2" class="content">
+    <button mat-mini-fab (click)="postComent()"  [disabled]="!commentForm.valid || postingComment">
+      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+    </button>
+  </div>
+</form>

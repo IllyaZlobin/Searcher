@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="100" fxFlex.gt-sm="70" class="title">
+        <h1>Top 50 Movies order by revenue</h1>
+    </div>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="5px">
+    <mat-card fxFlex="100" fxFlex.gt-md="30" fxFlex.gt-sm="40" fxFlex.gt-xs="45" class="movie-card"
+        *ngFor="let movie of (topMovies$ | async)?.data.movies">
+        <div class="img-wrap" *ngIf="movie.poster; else notImage">
+            <img md-card-image [src]=movie.poster width="350" height="400">
+        </div>
+        <ng-template #notImage>
+            <div class="img-wrap">
+                <img md-card-image src="../../../../assets//images/imgNotFound.jpg" width="300" height="350">
+            </div>
+        </ng-template>
+        <mat-card-content>
+            <h3>{{ movie.title }}</h3>
+            <p fxHide fxShow.gt-sm>{{movie.description}}</p>
+            <div fxLayout="row" fxLayoutAlign="center" class="specs">
+                <div fxFlex="25">
+                    <i class="fa fa-2x fa-comments" aria-hidden="true"></i><br>
+                    {{ movie.comments }}
+                </div>
+                <div fxFlex="25">
+                    <i class="fa fa-2x fa-imdb" aria-hidden="true"></i><br>
+                    {{movie.rating }}
+                </div>
+                <div fxFlex="25">
+                    <i class="fa fa-2x fa-star" aria-hidden="true"></i><br>
+                    {{ movie.totalStars }}
+                </div>
+                <div fxFlex="25">
+                    <i class="fa fa-2x fa-usd" aria-hidden="true"></i><br>
+                    {{ movie.revenue || 0}}
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="center">
+            <button fxFlex="50" mat-raised-button class="fw" (click)="getMovieDetails(movie.id)">DETAILS</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
